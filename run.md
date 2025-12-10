@@ -10,3 +10,6 @@ localhost:8888
 
 # admin
 localhost:7080
+
+# log 
+tail /usr/local/lsws/logs/error.log
