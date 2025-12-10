@@ -1,0 +1,1 @@
+<div class="float-lg-start col-lg-9 bg-primary">content</div>
