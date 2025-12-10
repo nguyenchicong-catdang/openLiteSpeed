@@ -26,6 +26,12 @@ git add .
 git commit -m "Initial commit"
 ```
 
+# remote add
+## khởi tạo remote
+```bash
+git remote add origin git@github.com:nguyenchicong-catdang/openLiteSpeed.git
+```
+
 ### Gỡ bỏ Submodule (Nếu có): Nếu nó là Submodule, bạn cần chạy lệnh:
 
 ```bash
