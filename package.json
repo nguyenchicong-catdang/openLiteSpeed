@@ -1,0 +1,24 @@
+{
+  "name": "openlitespeed",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/nguyenchicong-catdang/openLiteSpeed#readme",
+  "bugs": {
+    "url": "https://github.com/nguyenchicong-catdang/openLiteSpeed/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nguyenchicong-catdang/openLiteSpeed.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "vite": "^7.2.7"
+  }
+}
