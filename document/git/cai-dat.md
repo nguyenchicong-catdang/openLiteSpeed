@@ -15,23 +15,23 @@ git config --global init.defaultBranch main
 ```bash
 git branch -m main
 ```
-
-# Thêm các tệp của bạn (Stage):
-```bash
-git add .
-```
-
-# Tạo commit đầu tiên (Commit):
-```bash
-git commit -m "Initial commit"
-```
-
 # remote add
 ## khởi tạo remote
 ```bash
 git remote add origin git@github.com:nguyenchicong-catdang/openLiteSpeed.git
 ```
-
+# Thêm các tệp của bạn (Stage):
+```bash
+git add .
+```
+# Tạo commit đầu tiên (Commit):
+```bash
+git commit -m "Initial commit"
+```
+## comit and push
+```bash
+git push -u origin main
+```
 ### Gỡ bỏ Submodule (Nếu có): Nếu nó là Submodule, bạn cần chạy lệnh:
 
 ```bash
