@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        fetch('/api/check-auth/')
+        .then(response => {
+            if (!response.ok) {
+                return window.location.href = "/login/";
+            }
+        });
+
+        async function btnLogout() {
+            await fetch('/api/logout/')
+            .then(response => {
+                    if (response.ok) {
+                        return window.location.href = "/login/";
+                    }
+                });
+        }
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+</head>
+<body>
+    <button onclick="btnLogout()">Logout</button>
+    <div id="root"></div>
+</body>
+</html>

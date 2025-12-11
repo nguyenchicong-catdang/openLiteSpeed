@@ -1,0 +1,2 @@
+# public function setSessionUser(string $strUser): void {
+Từ khóa void trong lập trình, khi được sử dụng trong ngữ cảnh của một hàm (function) hoặc phương thức (method), là một từ viết tắt (hoặc đại diện) cho khái niệm "không có giá trị trả về" (No Return Value).

@@ -9,7 +9,7 @@ export default defineConfig({
     root: root("vite_admin"),
     server: {
         proxy: {
-            '/dev/api-login': {
+            '/api': {
                 target: 'http://localhost:8888'
             }
         }
