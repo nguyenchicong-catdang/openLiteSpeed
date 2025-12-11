@@ -16,10 +16,19 @@
   "main": "index.js",
   "scripts": {
     "dev-adminVite": "vite --config vite_admin/adminVite.config.js",
+    "build-adminVite": "vite build --config vite_admin/adminVite.config.js",
+    "preview-adminVite": "vite preview --config vite_admin/adminVite.config.js",
     "dev": "npm run dev-adminVite",
+    "build": "npm run build-adminVite",
+    "preview": "npm run preview-adminVite",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
+    "@vitejs/plugin-react": "^5.1.2",
     "vite": "^7.2.7"
+  },
+  "dependencies": {
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1"
   }
 }
