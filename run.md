@@ -1,4 +1,6 @@
 # run wsl
+cd ~/openLiteSpeed
+
 cd ~/openLiteSpeed/VD1
 # pwd
 /home/cong/openLiteSpeed/VD1
