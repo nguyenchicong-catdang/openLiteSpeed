@@ -13,3 +13,12 @@ localhost:7080
 
 # log 
 tail /usr/local/lsws/logs/error.log
+
+# mysql
+sudo service mysql start
+
+sudo service mysql restart
+
+mysql -u root -p
+
+sudo service mysql status

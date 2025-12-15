@@ -7,10 +7,19 @@ require_once __DIR__ . "/../Controllers/LoginController.php";
 require_once __DIR__ . "/../Models/LoginModel.php";
 // App/Core/AuthMiddleware.php
 require_once __DIR__ . "/AuthMiddleware.php";
+// App/Core/config.php
+require_once __DIR__ . "/config.php";
+// App/Core/Database.php
+require_once __DIR__ . "/Database.php";
 
 $instanceLoginController = new LoginController;
 $instanceLoginModel = new LoginModel;
 $instanceAuthMiddleware = new AuthMiddleware;
+
+// 2. Tối ưu: Truyền mảng cấu hình $sql vào getInstance()
+// Database Singleton chỉ được tạo 1 lần.
+$conn = Database::getInstance($sql); 
+$pdo = $conn->getConnection(); // Lấy đối tượng PDO
 
 
 $url = $_SERVER['REQUEST_URI'];
