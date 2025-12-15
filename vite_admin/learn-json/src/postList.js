@@ -12,11 +12,22 @@ const dataPosts = [
 
 ]
 
-function postList(elemetContent) {
+async function fetchData() {
+    const response = await fetch('/api/post/list');
+    const result = await response.json();
+    return result;
+    console.log(result)
+}
+
+async function postList(elemetContent) {
+    // fetch data
+    //fetchData();
     const html = render()
     elemetContent.innerHTML = html;
+    // fetch data
+    const postsData = await fetchData();
     // tuong tap dom
-    renderDom(elemetContent)
+    renderDom(elemetContent, postsData)
     //console.log("postList")
 }
 
@@ -27,6 +38,7 @@ function render() {
             <tr>
                 <th>id</th>
                 <th>title</th>
+                <th>content</th>
             </tr>
         </thead>
         <tbody>
@@ -37,14 +49,15 @@ function render() {
     `;
 }
 
-function renderDom(elemetContent) {
+function renderDom(elemetContent, postsData) {
     const elementTbody = elemetContent.querySelector('tbody');
     // array.map(function(currentValue, index, arr), thisValue)
-    const arrPosts = dataPosts.map(post => {
+    const arrPosts = postsData.map(post => {
         return /* html */ `
         <tr>
             <td>${post.id}</td>
             <td>${post.title}</td>
+            <td>${post.content}</td>
         </tr>
         `
     })

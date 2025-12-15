@@ -12,14 +12,22 @@ require_once __DIR__ . "/config.php";
 // App/Core/Database.php
 require_once __DIR__ . "/Database.php";
 
+// App/Controllers/PostController.php
+require_once __DIR__ . "/../Controllers/PostController.php";
+// App/Models/PostModel.php
+require_once __DIR__ . "/../Models/PostModel.php";
+
 $instanceLoginController = new LoginController;
 $instanceLoginModel = new LoginModel;
 $instanceAuthMiddleware = new AuthMiddleware;
 
+$instancePostController = new PostController;
+$instancePostModel = new PostModel;
+
 // 2. Tối ưu: Truyền mảng cấu hình $sql vào getInstance()
 // Database Singleton chỉ được tạo 1 lần.
 $conn = Database::getInstance($sql); 
-$pdo = $conn->getConnection(); // Lấy đối tượng PDO
+//$pdo = $conn->getConnection(); // Lấy đối tượng PDO
 
 
 $url = $_SERVER['REQUEST_URI'];
@@ -54,6 +62,9 @@ switch($path) {
         header("Content-Type: application/json");
         echo json_encode(["message" => "Authenticated"]);
         exit;
+        break;
+    case '/api/post/list':
+        $instancePostController->fetchAll($conn, $instancePostModel);
         break;
     default:
         http_response_code(404);

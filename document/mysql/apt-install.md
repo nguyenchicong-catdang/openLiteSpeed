@@ -18,6 +18,10 @@ SHOW DATABASES;
 USE mysql;
 # xom bang
 SHOW TABLES;
+# xem cau trúc bảng
+DESCRIBE ten_bang;
+-- hoặc viết tắt:
+DESC ten_bang;
 # Tạo Tài Khoản Người Dùng Mới
 sudo mysql
 
