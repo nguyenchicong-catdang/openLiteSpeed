@@ -30,3 +30,9 @@ CREATE USER 'learn'@'localhost' IDENTIFIED BY 'Learn@01';
 # Cấp quyền trên database 'learn'
 GRANT ALL PRIVILEGES ON learn.* TO 'learn'@'localhost';
 # Áp dụng thay đổi
+
+## xem port
+SHOW VARIABLES LIKE 'port';
+## cài lại mật khẩu
+ALTER USER 'user_name'@'localhost' IDENTIFIED WITH mysql_native_password BY 'mat_khau_moi_cua_ban';
+
