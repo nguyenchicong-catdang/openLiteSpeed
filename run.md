@@ -17,8 +17,14 @@ tail /usr/local/lsws/logs/error.log
 # mysql
 sudo service mysql start
 
+SHOW VARIABLES LIKE 'port';
+
 sudo service mysql restart
 
 mysql -u root -p
 
 sudo service mysql status
+## run laravel
+cd example-app
+
+composer run dev
