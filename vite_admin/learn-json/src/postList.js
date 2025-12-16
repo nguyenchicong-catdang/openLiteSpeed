@@ -49,10 +49,32 @@ function render() {
     `;
 }
 
-function renderDom(elemetContent, postsData) {
+// function renderDom(elemetContent, postsData) {
+//     const elementTbody = elemetContent.querySelector('tbody');
+//     // array.map(function(currentValue, index, arr), thisValue)
+//     const arrPosts = postsData.map(post => {
+//         return /* html */ `
+//         <tr>
+//             <td>${post.id}</td>
+//             <td>${post.title}</td>
+//             <td>${post.content}</td>
+//         </tr>
+//         `
+//     })
+//     // array.reduce(function(total, currentValue, currentIndex, arr), initialValue)
+//     let rowsHtml = arrPosts.reduce((total, currentValue) => {
+//         return total + currentValue
+//     }, "")
+//     //console.log(rowsHtml)
+
+//     elementTbody.innerHTML = rowsHtml
+// }
+
+function renderDom(elemetContent, arrPosts) {
     const elementTbody = elemetContent.querySelector('tbody');
-    // array.map(function(currentValue, index, arr), thisValue)
-    const arrPosts = postsData.map(post => {
+
+    // Sử dụng arrPosts được truyền vào
+    const rowsHtmlArray = arrPosts.map(post => {
         return /* html */ `
         <tr>
             <td>${post.id}</td>
@@ -61,11 +83,9 @@ function renderDom(elemetContent, postsData) {
         </tr>
         `
     })
-    // array.reduce(function(total, currentValue, currentIndex, arr), initialValue)
-    let rowsHtml = arrPosts.reduce((total, currentValue) => {
-        return total + currentValue
-    }, "")
-    //console.log(rowsHtml)
+
+    // Tối ưu hóa: Dùng join('') thay vì reduce
+    let rowsHtml = rowsHtmlArray.join('');
 
     elementTbody.innerHTML = rowsHtml
 }
