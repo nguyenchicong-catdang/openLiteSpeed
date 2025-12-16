@@ -24,3 +24,7 @@ sudo service mysql restart
 mysql -u root -p
 
 sudo service mysql status
+## run laravel
+cd example-app
+
+composer run dev
