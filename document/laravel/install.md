@@ -12,7 +12,9 @@ source ~/.bashrc
 ### test
 laravel -v
 ## up php
-sudo apt install php-xml
+sudo apt install php8.3-xml
+## cai dat sudo apt install php8.3-sqlite3
+sudo apt install php8.3-sqlite3
 ## cai dat php8.3-mysql
 sudo apt install php8.3-mysql
 ## cai dat (php-xml)-> bao loi
@@ -21,6 +23,8 @@ laravel new example-app
 cd example-app
 
 composer update
+
+composer dump-autoload
 
 ## tao .env ket noi db
 dien du thong tin 
