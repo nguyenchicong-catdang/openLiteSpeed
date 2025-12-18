@@ -1,5 +1,5 @@
 <?php
-namespace SrcApp\Controllers;
+namespace SrcApp\Http\Controllers;
 use App\Http\Controllers\Controller;
 
 class TestController extends Controller {
