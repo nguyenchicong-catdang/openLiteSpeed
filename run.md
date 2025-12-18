@@ -28,3 +28,14 @@ sudo service mysql status
 cd example-app
 
 composer run dev
+
+tail -n 20 storage/logs/laravel.log
+
+# fix
+tail -n 20 src/storage/logs/laravel.log
+
+# xoa cache
+php artisan optimize:clear
+
+# xoa thu muc
+rm -rf resources/views/errors

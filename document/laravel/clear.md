@@ -12,3 +12,6 @@ php artisan cache:clear
 
 # Xóa các file log cũ để gọn nhẹ dự án (không bắt buộc)
 truncate -s 0 storage/logs/laravel.log
+
+# xoa het
+php artisan optimize:clear
