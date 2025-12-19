@@ -39,3 +39,5 @@ php artisan optimize:clear
 
 # xoa thu muc
 rm -rf resources/views/errors
+
+php artisan route:list -v

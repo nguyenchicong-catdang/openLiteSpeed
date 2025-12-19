@@ -16,32 +16,65 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        // 1. Validate dữ liệu đầu vào
+        // 1. Validate dữ liệu
         $credentials = $request->validate([
             'username' => 'required|string',
             'password' => 'required',
         ], [
-            // Sửa từ "username['required']" thành "username.required"
             'username.required' => 'Vui lòng nhập tên đăng nhập.',
-            'username.string'   => 'Tên đăng nhập phải là một chuỗi ký tự.',
             'password.required' => 'Mật khẩu không được để trống.',
         ]);
-        // dd($credentials);
 
-        // 2. Xử lý logic đăng nhập qua Model User (mặc định)
+        // 2. Xử lý đăng nhập
         if (Auth::attempt($credentials)) {
-            // Đăng nhập thành công, tạo lại session
             $request->session()->regenerate();
-
             Log::info("User {$credentials['username']} đã đăng nhập thành công.");
-            dd('ok');
-            return redirect()->intended('/dashboard');
+
+            // TRẢ VỀ: Nếu là API trả về JSON, nếu là Web trả về Redirect
+            if ($request->expectsJson()) {
+                return response()->json([
+                    'status' => 'success',
+                    'message' => 'Đăng nhập thành công',
+                    'user' => Auth::user()
+                ], 200);
+            }
+
+            return redirect()->intended(route('admin'));
         }
 
         // 3. Đăng nhập thất bại
-        Log::warning("Đăng nhập thất bại cho tài khoản: " . $credentials['username']);
+        Log::warning("Đăng nhập thất bại cho tài khoản: " . $request->username);
+
+        if ($request->expectsJson()) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Thông tin đăng nhập không khớp.'
+            ], 401);
+        }
+
         return back()->withErrors([
             'username' => 'Thông tin đăng nhập không khớp với dữ liệu của chúng tôi.',
         ])->onlyInput('username');
+    }
+
+    /**
+     * Xử lý đăng xuất người dùng.
+     */
+    public function logout(Request $request)
+    {
+        // 1. Đăng xuất khỏi hệ thống
+        Auth::logout();
+
+        // 2. Vô hiệu hóa Session hiện tại để đảm bảo an toàn
+        $request->session()->invalidate();
+
+        // 3. Làm mới CSRF token để tránh tấn công giả mạo yêu cầu
+        $request->session()->regenerateToken();
+
+        // Ghi log nếu cần thiết
+        Log::info("Người dùng đã đăng xuất.");
+
+        // Chuyển hướng về trang chủ hoặc trang login
+        return redirect('/');
     }
 }
