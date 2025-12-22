@@ -8,11 +8,12 @@
 <body>
     <p>example-app/src/vite/login/index.html</p>
     <form id="formLogin">
-        Username: <input type="text" name="username" id=""><br>
-        Password: <input type="password" name="" id=""><br>
-        <button type="submit">Login</button>
+        Username: <input type="text" name="username" required><br>
+        Password: <input type="password" name="password" required><br>
+        <button type="submit">Login</button><br>
+        <div class="err"></div><br>
     </form>
-    <div id="debug-output"></div>
-    <script type="module" src="./loginMain.js"></script>
+    <!-- <script type="module" src="./loginMain.js"></script> -->
+     <script type="module" src="./login-api.js"></script>
 </body>
 </html>

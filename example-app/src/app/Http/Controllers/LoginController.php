@@ -14,47 +14,8 @@ class LoginController extends Controller
         return view('custom::admin.login');
     }
 
-    public function login(Request $request)
-    {
-        // 1. Validate dữ liệu
-        $credentials = $request->validate([
-            'username' => 'required|string',
-            'password' => 'required',
-        ], [
-            'username.required' => 'Vui lòng nhập tên đăng nhập.',
-            'password.required' => 'Mật khẩu không được để trống.',
-        ]);
-
-        // 2. Xử lý đăng nhập
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-            Log::info("User {$credentials['username']} đã đăng nhập thành công.");
-
-            // TRẢ VỀ: Nếu là API trả về JSON, nếu là Web trả về Redirect
-            if ($request->expectsJson()) {
-                return response()->json([
-                    'status' => 'success',
-                    'message' => 'Đăng nhập thành công',
-                    'user' => Auth::user()
-                ], 200);
-            }
-
-            return redirect()->intended(route('admin'));
-        }
-
-        // 3. Đăng nhập thất bại
-        Log::warning("Đăng nhập thất bại cho tài khoản: " . $request->username);
-
-        if ($request->expectsJson()) {
-            return response()->json([
-                'status' => 'error',
-                'message' => 'Thông tin đăng nhập không khớp.'
-            ], 401);
-        }
-
-        return back()->withErrors([
-            'username' => 'Thông tin đăng nhập không khớp với dữ liệu của chúng tôi.',
-        ])->onlyInput('username');
+    public function login() {
+        
     }
 
     /**

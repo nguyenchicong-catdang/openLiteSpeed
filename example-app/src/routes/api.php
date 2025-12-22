@@ -3,6 +3,10 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use SrcApp\Http\Controllers\LoginApiController;
+
+Route::post('/login-api', [LoginApiController::class, 'loginApi'])->middleware('web');
+
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
