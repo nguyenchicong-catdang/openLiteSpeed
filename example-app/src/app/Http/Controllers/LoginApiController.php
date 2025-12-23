@@ -21,7 +21,7 @@ class LoginApiController extends Controller
 
     public function loginApi(Request $request) {
         try {
-
+            
             $credentials = $request->validate([
                 'username' => 'required|string',
                 'password' => 'required',

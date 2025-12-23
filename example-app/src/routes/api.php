@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Route;
 use SrcApp\Http\Controllers\LoginApiController;
 
 Route::post('/login-api', [LoginApiController::class, 'loginApi'])->middleware('web');
+Route::get('/check-auth', function (Request $request) {
+    return 'test';
+})->middleware('auth:sanctum');
 
 Route::get('/user', function (Request $request) {
     return $request->user();
