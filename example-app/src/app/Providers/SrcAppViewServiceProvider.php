@@ -20,15 +20,16 @@ class SrcAppViewServiceProvider extends ServiceProvider
     // Ép Laravel dùng LoginModel của bạn cho mọi hoạt động Auth
     config(['auth.providers.users.model' => \SrcApp\Models\LoginModel::class]);
     // view
-    $this->loadViewsFrom(base_path('src/app/Views'), 'custom');
+    $this->loadViewsFrom(base_path('src/app/Views'), 'src');
 
     // Cho phép copy view ra ngoài bằng lệnh artisan
     // run php artisan vendor:publish --tag=custom-views
-    
+
     if ($this->app->runningInConsole()) {
         $this->publishes([
             base_path('src/app/Views') => resource_path('views/vendor/custom'),
         ], 'custom-views');
     }
+        logger('Provider loaded');
 }
 }

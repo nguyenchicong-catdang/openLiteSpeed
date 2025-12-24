@@ -1,7 +1,9 @@
 <?php
+// src/bootstrap/providers.php
 
-return [
-    App\Providers\AppServiceProvider::class,
-    //App\Providers\TestViewServiceProvider::class,
-    SrcApp\Providers\SrcAppViewServiceProvider::class,
-];
+$providerFiles = glob(__DIR__ . '/../app/Providers/*Provider.php');
+
+return array_map(function ($file) {
+    $class = 'SrcApp\\Providers\\' . basename($file, '.php');
+    return $class;
+}, $providerFiles);

@@ -4,6 +4,9 @@ namespace SrcApp\Http\Controllers;
 
 use Illuminate\Http\Request; // Nhớ dùng class này
 use App\Http\Controllers\Controller;
+
+//use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Validator;
 use Exception;
 use Illuminate\Container\Attributes\Log as AttributesLog;
 use Illuminate\Support\Facades\Auth; // Để xử lý đăng nhập
@@ -19,26 +22,44 @@ class LoginApiController extends Controller
         return view('custom::admin.login');
     }
 
-    public function loginApi(Request $request) {
+    public function loginApi(Request $request)
+    {
         try {
-            
-            $credentials = $request->validate([
+            // https://laravel.com/docs/12.x/validation#manually-creating-validators
+            // 1. Validation logic (Không gây ra Exception, chỉ trả về true/false)
+            $validator = Validator::make($request->all(), [
                 'username' => 'required|string',
                 'password' => 'required',
             ]);
+
+            if ($validator->fails()) {
+                // return response()->json([
+                //     'status' => 'error',
+                //     'errors' => $validator->errors()
+                // ], 422);
+                return response(['abc'],422);
+            }
+
+            $credentials = $validator->validated();
+
+            // 2. Logic nghiệp vụ (Có thể gây ra Exception nếu DB lỗi)
             if (Auth::attempt($credentials)) {
                 $request->session()->regenerate();
-                return response()->json([], 201);
-            } else {
-                return response()->json([],401);
+                return response()->json(['message' => 'Thành công'], 201);
             }
-            //return response()->json($validated);
 
-        } catch(Exception $e) {
-            log::info($e);
-            throw $e;
+            return response()->json(['message' => 'Sai tài khoản hoặc mật khẩu'], 401);
+        } catch (\Throwable $e) {
+            // Bắt tất cả các loại lỗi (Database, Runtime, v.v.)
+            Log::error("Login Error: " . $e->getMessage(), [
+                'trace' => $e->getTraceAsString()
+            ]);
+
+            return response()->json([
+                'status' => 'server_error',
+                'message' => 'Đã có lỗi hệ thống xảy ra, vui lòng thử lại sau.'
+            ], 500);
         }
-
     }
 
     public function login(Request $request)

@@ -2,7 +2,7 @@
 // example-app/src/routes/web.php
 use Illuminate\Support\Facades\Route;
 use SrcApp\Http\Controllers\TestController;
-use SrcApp\Http\Controllers\LoginController;
+use SrcApp\Http\Controllers\Web\LoginController;
 
 
 Route::get('/', function () {
