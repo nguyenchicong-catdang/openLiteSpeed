@@ -4,6 +4,7 @@ namespace SrcApp\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
+
 class SrcAppProvider extends ServiceProvider
 {
     /**
@@ -11,10 +12,15 @@ class SrcAppProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->bind(
-            \SrcApp\Contracts\UserRepositoryInterface::class,
-            \SrcApp\Repositories\UserRepository::class
-        );
+        // $this->app->bind(
+        //     \SrcApp\Contracts\UserRepositoryInterface::class,
+        //     \SrcApp\Repositories\UserRepository::class
+        // );
+        // Đổi đường dẫn mặc định của Migration
+        // Sử dụng cách này nếu bản Laravel của bạn hỗ trợ
+        // if (method_exists($this->app, 'useDatabasePath')) {
+        //     $this->app->useDatabasePath(base_path('src/database'));
+        // }
     }
 
     /**
