@@ -40,6 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'learn_api_auth' => [
+            'driver' => 'sanctum', // Hoặc 'session' tùy nhu cầu
+            'provider' => 'learn_apis',
+        ],
     ],
 
     /*
@@ -63,6 +67,10 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', App\Models\User::class),
+        ],
+        'learn_apis' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\LearnApi::class,
         ],
 
         // 'users' => [

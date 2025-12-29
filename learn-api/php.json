@@ -1,0 +1,12 @@
+{
+    "Laravel JSON Response": {
+    "prefix": "resj",
+    "body": [
+        "return response()->json([",
+        "    'status' => '${1:success}',",
+        "    'data' => $2",
+        "], ${3:200});"
+    ],
+    "description": "Trả về JSON response trong Laravel"
+    }
+}
