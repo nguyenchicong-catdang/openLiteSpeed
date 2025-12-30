@@ -10,7 +10,8 @@ async function authMiddleware({request}, next) {
     //     console.log(response.status)
     //     throw redirect(response.url)
     // }
-    console.log(response)
+    //console.log(response)
+    return null
 
 }
 

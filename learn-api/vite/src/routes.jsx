@@ -5,8 +5,14 @@ import App from "./App";
 import Login from "./Login";
 import Dashboard from "./pages/Dashboard";
 import Posts from "./pages/Posts";
-import PostsIndex from "./pages/posts/PostsIndex";
-import PostsCreate from "./pages/posts/PostsCreate";
+import PostsIndex from "./components/posts/PostsIndex";
+import PostsCreate from "./components/posts/PostsCreate";
+import { postsLoader } from "./loaders/posts/postsLoader";
+import PostsStore from "./components/posts/PostsStore";
+import { postsStoreAction } from "./actions/posts/postsStoreAction";
+import PostsShow from "./components/posts/PostsShow";
+import { postsShowLoader } from "./loaders/posts/postsShowLoader";
+import ErrorPage from "./pages/ErrorPage";
 // Sử dụng Component thay vì element để đúng chuẩn v7
 const routes = createBrowserRouter([
     {
@@ -28,7 +34,19 @@ const routes = createBrowserRouter([
                         children: [
                             {
                                 index: true,
-                                Component: PostsIndex
+                                Component: PostsIndex,
+                                loader: postsLoader
+                            },
+                            {
+                                path: 'store',
+                                Component: PostsStore,
+                                action: postsStoreAction
+                            },
+                            {
+                                path: ':id',
+                                Component: PostsShow,
+                                loader: postsShowLoader,
+                                errorElement: <ErrorPage />
                             },
                             {
                                 path: 'create',

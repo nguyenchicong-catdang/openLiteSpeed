@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthApiController;
+use App\Http\Controllers\PostsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 //use App\Http\Controllers\LearnApiController;
@@ -18,4 +19,7 @@ Route::middleware('auth:sanctum')->group(function() {
     Route::get('/checkout', function () {
         return response()->json(['message' => 'Bạn đã vào trang thanh toán!']);
     });
+
+    // posts
+    Route::apiResource('posts', PostsController::class);
 });

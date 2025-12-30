@@ -13,6 +13,9 @@ export default function Sidebar() {
                           <Link to="posts">Posts All</Link>
                       </li>
                       <li>
+                          <Link to="posts/store">Posts Store</Link>
+                      </li>
+                      <li>
                         <Link to="posts/create">Post Create</Link>
                       </li>
 

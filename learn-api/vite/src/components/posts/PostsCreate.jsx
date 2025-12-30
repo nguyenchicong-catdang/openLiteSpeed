@@ -1,5 +1,7 @@
 export default function PostsCreate() {
   return (
-    <div>PostsCreate</div>
+      <div>
+          PostsCreate
+    </div>
   )
 }
