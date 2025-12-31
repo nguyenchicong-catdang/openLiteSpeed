@@ -43,7 +43,7 @@ class PostsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Posts $post)
+    public function show(Posts $post): JsonResponse
     {
         //
         return response()->json($post, 200);
@@ -51,9 +51,10 @@ class PostsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Posts $posts)
+    public function edit(Posts $post): JsonResponse
     {
         //
+        return response()->json($post, 200);
     }
 
     /**
@@ -62,6 +63,7 @@ class PostsController extends Controller
     public function update(UpdatePostsRequest $request, Posts $posts)
     {
         //
+        return response()->json('', 200);
     }
 
     /**

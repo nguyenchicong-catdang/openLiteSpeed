@@ -11,7 +11,7 @@ class UpdatePostsRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,6 +23,8 @@ class UpdatePostsRequest extends FormRequest
     {
         return [
             //
+            'title'=> 'required',
+            'content' => 'required'
         ];
     }
 }

@@ -5,14 +5,15 @@ async function authMiddleware({request}, next) {
     if (!localStorage.getItem('laravel_token')) {
         throw redirect('login')
     }
-    let response = await next()
+    //let response = await next()
     // if (response.status === 302) {
     //     console.log(response.status)
     //     throw redirect(response.url)
     // }
     //console.log(response)
-    return null
-
+    //return null
+    //return response
+    return await next()
 }
 
 export {authMiddleware}

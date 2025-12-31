@@ -13,6 +13,9 @@ import { postsStoreAction } from "./actions/posts/postsStoreAction";
 import PostsShow from "./components/posts/PostsShow";
 import { postsShowLoader } from "./loaders/posts/postsShowLoader";
 import ErrorPage from "./pages/ErrorPage";
+import PostsEdit from "./components/posts/PostsEdit";
+import { postsEditLoader } from "./loaders/posts/postsEditLoader";
+import { postsUpdateAction } from "./actions/posts/postsUpdateAction";
 // Sử dụng Component thay vì element để đúng chuẩn v7
 const routes = createBrowserRouter([
     {
@@ -46,6 +49,13 @@ const routes = createBrowserRouter([
                                 path: ':id',
                                 Component: PostsShow,
                                 loader: postsShowLoader,
+                                errorElement: <ErrorPage />
+                            },
+                            {
+                                path: ':id/edit',
+                                Component: PostsEdit,
+                                loader: postsEditLoader,
+                                action: postsUpdateAction,
                                 errorElement: <ErrorPage />
                             },
                             {

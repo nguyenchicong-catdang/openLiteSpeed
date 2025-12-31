@@ -11,7 +11,11 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 // learn login
-Route::get('/login', function() {return [403];})->name('login');
+//Route::get('/login', function() {return [403];})->name('login');
+Route::get('/login', function () {
+    return response()->noContent(403);
+})->name('login');
+
 Route::post('/login', [AuthApiController::class, 'login']);
 // middleware('auth:sanctum)
 Route::middleware('auth:sanctum')->group(function() {
