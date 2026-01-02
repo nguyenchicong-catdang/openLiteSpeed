@@ -10,7 +10,7 @@ export async function postsShowLoader({params}) {
                 'Authorization': 'Bearer ' + token
             }
         });
-        console.log(response)
+        //console.log(response)
         if (!response.ok) {
             throw new Response('Không tìm thấy', {status:404})
         }

@@ -60,17 +60,19 @@ class PostsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePostsRequest $request, Posts $posts)
+    public function update(UpdatePostsRequest $request, Posts $post)
     {
         //
-        return response()->json('', 200);
+        $post->update($request->validated());
+        return response()->json($post, 200);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Posts $posts)
+    public function destroy(Posts $post)
     {
-        //
+        $post->delete();
+        return response()->json(null, 204);
     }
 }

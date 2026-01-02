@@ -5,10 +5,10 @@ export default function PostsEdit() {
     const post = useLoaderData();
     const actionData = useActionData();
 
-    console.log(actionData.errors)
+    //console.log(actionData)
   return (
       <div>
-          <Form method="post">
+          <Form method="POST">
               Title: <input type="text" name="title" defaultValue={post.title } /><br />
               Content: <textarea name="content" rows="10" defaultValue={post.content}></textarea><br />
               <button type="submit">Update</button><br />
