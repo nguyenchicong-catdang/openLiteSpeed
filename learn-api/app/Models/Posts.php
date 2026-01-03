@@ -14,7 +14,19 @@ class Posts extends Model
         'title',
         'content'
     ];
-    protected $casts = [
-        'content' => 'json' // // Hoặc 'array'
-    ];
+    // protected $casts = [
+    //     'content' => 'json' // // Hoặc 'array'
+    // ];
+
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return json
+     */
+    protected function casts(): array
+    {
+        return [
+            'content' => 'json',
+        ];
+    }
 }
