@@ -3,7 +3,7 @@ import ReactQuill from "react-quill-new";
 import 'react-quill-new/dist/quill.bubble.css'; // Dùng theme bubble cho gọn
 export default function PostsIndex() {
    const posts = useLoaderData();
-   console.log(posts)
+   //console.log(posts)
   return (
       <div>
           <h1>Danh sach bai viet</h1>

@@ -1,24 +1,20 @@
-import { useState } from "react"
-import ReactQuill from "react-quill-new"
-import 'react-quill-new/dist/quill.snow.css'
+import ReactQuill from "react-quill-new";
+import "react-quill-new/dist/quill.snow.css";
 
-export default function QuillEditor() {
-   const [editorHtml, setEditorHtml] = useState(''); // Dùng để hiển thị
-   const [jsonValue, setJsonValue] = useState(''); // Dùng để gửi form
-   const onChangeHandler = (content, delta, source, editor) => {
-      setEditorHtml(content); // Cập nhật HTML cho editor
-      const rowJson = JSON.stringify(editor.getContents()); // Lấy định dạng Delta (JSON)
-      setJsonValue(rowJson)
-   }
+// Nhận value và onChange từ component cha truyền xuống
+export default function QuillEditor({ value, onChange }) {
+   const handleChange = (content, delta, source, editor) => {
+      // Truyền dữ liệu ngược lại cho cha thông qua hàm onChange
+      onChange(content);
+   };
+
    return (
-      <div style={{margin: '10px'}}>
-         {/* Input này sẽ gửi dữ liệu JSON lên Server qua Form */}
-         <input type="hidden" name="content" value={jsonValue} />
+      <div style={{ margin: "10px" }}>
          <ReactQuill
             theme="snow"
-            value={editorHtml}
-            onChange={onChangeHandler}
+            value={value} // Dữ liệu từ cha sẽ được hiển thị ở đây
+            onChange={handleChange}
          />
       </div>
-   )
+   );
 }
