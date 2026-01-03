@@ -14,4 +14,7 @@ class Posts extends Model
         'title',
         'content'
     ];
+    protected $casts = [
+        'content' => 'json' // // Hoặc 'array'
+    ];
 }

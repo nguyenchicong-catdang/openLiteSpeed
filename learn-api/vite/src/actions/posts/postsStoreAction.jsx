@@ -3,7 +3,7 @@ import { redirect } from "react-router";
 export async function postsStoreAction({request}) {
     const formData = await request.formData()
     // const data = Object.fromEntries(formData)
-    // console.log(data)
+   //console.log(formData.get('content'))
 
     // token
     const token = localStorage.getItem('laravel_token');

@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->longText('content');
+            //$table->longText('content');
+            // Sử dụng kiểu json để tối ưu cho Delta Quill
+            $table->json('content')->nullable();
             $table->timestamps();
         });
     }
