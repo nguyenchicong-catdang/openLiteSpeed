@@ -1,8 +1,9 @@
 import { Link } from "react-router"
+import LinkQuill from "../quills/LinkQuill"
 export default function Sidebar() {
   return (
       <aside>
-          <ul>
+          {/* <ul>
               <li>
                 <Link to="/">Dashboard</Link>
               </li>
@@ -27,7 +28,8 @@ export default function Sidebar() {
               <li>
                 <Link></Link>
               </li>
-          </ul>
+          </ul> */}
+        <LinkQuill />
     </aside>
   )
 }

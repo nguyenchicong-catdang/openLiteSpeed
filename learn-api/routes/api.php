@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\AuthApiController;
+use App\Http\Controllers\QuillController;
+
 //use App\Http\Controllers\LearnApiController;
 
 Route::get('/user', function (Request $request) {
@@ -29,4 +31,7 @@ Route::middleware('auth:sanctum')->group(function() {
     Route::apiResource('posts', PostsController::class);
     // upload image
     Route::post('upload',[ImageController::class, 'upload']);
+    // quill
+    // Route::apiResource('quills', QuillController::class);
+    Route::resource('quills', QuillController::class);
 });

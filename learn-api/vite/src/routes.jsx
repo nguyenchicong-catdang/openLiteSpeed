@@ -9,12 +9,13 @@ import { routesPosts } from "./routes/routesPosts";
 import { uploadImageAction } from "./actions/posts/upload/uploadImageAction";
 import ErrorPage from "./pages/ErrorPage";
 
-const routesResoures = [
-   routesPosts
-]
+import { routesQuill } from "./quills/routesQuill";
+import HydrateFallback from "./HydrateFallback";
+const routesResoures = [routesPosts, routesQuill];
 const routes = createBrowserRouter([
    {
       path: "/",
+      hydrateFallbackElement: <HydrateFallback />,
       Component: Root,
       errorElement: <ErrorPage />,
       children: [
