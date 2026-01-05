@@ -1,9 +1,11 @@
 import { Form, useActionData } from "react-router"; // [1] Import Form từ react-router
 import QuillEditor from "../QuillEditor";
+import { useState } from "react";
 export default function PostsStore() {
    // tra ve null neu dang nhap lan dau -> chua co action
    const actionData = useActionData() ?? {};
-   const arrMess = Object.values(actionData)
+   const arrMess = Object.values(actionData);
+   const [content, setContent] = useState('')
 
    //const arrMess = actionData ? Object.values(actionData) : [];
    //console.log(arrMess)
@@ -13,7 +15,8 @@ export default function PostsStore() {
          <Form method="post">
             Title: <input type="text" name="title" /> <br />
             {/* Content: <textarea name="content" rows="10"></textarea> <br /> */}
-            <QuillEditor /> <br />
+            <input type="hidden" name="content" value={content} />
+            <QuillEditor onChange={setContent} /> <br />
             <button type="submit">Tao bai viet moi</button>
          </Form>
          <div style={{ color: 'red' }}>
