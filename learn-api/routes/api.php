@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\AuthApiController;
+use App\Http\Controllers\MediaController;
 use App\Http\Controllers\QuillController;
 
 //use App\Http\Controllers\LearnApiController;
@@ -34,4 +35,6 @@ Route::middleware('auth:sanctum')->group(function() {
     // quill
     // Route::apiResource('quills', QuillController::class);
     Route::resource('quills', QuillController::class);
+    // media
+    Route::apiResource('media', MediaController::class);
 });

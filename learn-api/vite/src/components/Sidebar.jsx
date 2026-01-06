@@ -1,5 +1,6 @@
 import { Link } from "react-router"
 import LinkQuill from "../quills/LinkQuill"
+import LinkMedia from "../media/LinkMedia"
 export default function Sidebar() {
   return (
       <aside>
@@ -29,7 +30,8 @@ export default function Sidebar() {
                 <Link></Link>
               </li>
           </ul> */}
-        <LinkQuill />
+        {/* <LinkQuill /> */}
+        <LinkMedia />
     </aside>
   )
 }

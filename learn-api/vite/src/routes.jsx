@@ -11,7 +11,8 @@ import ErrorPage from "./pages/ErrorPage";
 
 import { routesQuill } from "./quills/routesQuill";
 import HydrateFallback from "./HydrateFallback";
-const routesResoures = [routesPosts, routesQuill];
+import { routesMedia } from "./media/routesMedia";
+const routesResoures = [routesPosts, routesQuill, routesMedia];
 const routes = createBrowserRouter([
    {
       path: "/",

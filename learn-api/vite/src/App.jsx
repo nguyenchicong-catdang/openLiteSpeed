@@ -7,7 +7,7 @@ export default function App() {
    return (
       <div>
          <Sidebar />
-         <UploadImage />
+         {/* <UploadImage /> */}
          <Outlet />
       </div>
    )
