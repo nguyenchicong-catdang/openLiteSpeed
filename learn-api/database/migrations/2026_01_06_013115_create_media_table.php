@@ -17,6 +17,13 @@ return new class extends Migration
             $table->string('path'); // duong dan luu tru
             $table->string('type'); // phan loai: image, php ,video
             $table->bigInteger('size'); // dung luong file
+            // Thuộc tính mở rộng (Nullable vì không phải file nào cũng có)
+            $table->string('alt')->nullable();
+            $table->text('caption')->nullable();
+            $table->string('duration')->nullable(); // Video
+            $table->string('thumbnail_path')->nullable(); // Video
+            $table->integer('author')->nullable(); // PDF
+
             $table->timestamps();
         });
     }

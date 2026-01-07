@@ -14,7 +14,13 @@ class Media extends Model
         'name',
         'path',
         'type',
-        'size'
+        'size',
+        // Thuộc tính mở rộng (Nullable vì không phải file nào cũng có)
+        'alt',
+        'caption',
+        'duration',
+        'thumbnail_path',
+        'author'
     ];
 
     // Truy vấn nhanh các file
@@ -25,5 +31,10 @@ class Media extends Model
     public function scopePdfs($query) {
         return $query->where('type', 'pdf');
     }
+    // thêm URL
+    // protected $appends = ['url']; // Tự động thêm trường 'url' vào JSON
 
+    // public function getUrlAttribute() {
+    //     return asset('storage/'. $this->path);
+    // }
 }

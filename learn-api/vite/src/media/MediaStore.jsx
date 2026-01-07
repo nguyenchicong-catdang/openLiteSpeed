@@ -5,19 +5,19 @@ export default function MediaStore() {
    const [fileType, setFileType] = useState('');
    const actionData = useActionData();
    const errors = actionData?.errors || {};
-   console.log(errors);
+   // console.log(errors);
    // file change
    const handleFileChange = (e) => {
       const file = e.target.files[0];
       if (!file) return;
 
       // Danh sách các loại file cho phép
-      // const allowedTypes = [
-      //    "image/jpeg",
-      //    "image/png",
-      //    "application/pdf",
-      //    "video/mp4",
-      // ];
+      const allowedTypes = [
+         "image/jpeg",
+         "image/png",
+         "application/pdf",
+         "video/mp4",
+      ];
 
       //setFileType(file.type);
       if (!allowedTypes.includes(file.type)) {

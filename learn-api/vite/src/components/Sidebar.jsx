@@ -3,7 +3,8 @@ import LinkQuill from "../quills/LinkQuill"
 import LinkMedia from "../media/LinkMedia"
 export default function Sidebar() {
   return (
-      <aside>
+     <aside>
+        <Link className="bg-blue-300 text-red-800" to="/login">Login</Link>
           {/* <ul>
               <li>
                 <Link to="/">Dashboard</Link>
